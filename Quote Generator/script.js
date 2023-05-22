@@ -44,7 +44,7 @@ function newQuote() {
   complete();
 }
 
-// Get Quotes From API
+// Get Quotes From API -1
 // async function getQuote() {
 //   loading();
 //   const apiUrl = "https://type.fit/api/quotes";
@@ -62,8 +62,9 @@ function newQuote() {
 //   }
 // }
 
-// Get Quotes From API
+// Get Quotes From API -2
 async function getQuote() {
+  loading();
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   const apiUrl =
     "https://api.forismatic.com/api/1.0/?method=getquote&lang=en&format=json";
@@ -85,6 +86,9 @@ async function getQuote() {
       quoteText.classList.remove("long-quote");
     }
     quoteText.innerText = data.quoteText;
+
+    //  Stop Loader , Show the Quote
+    complete();
   } catch (error) {
     // Catch Error Here
     getQuote();
