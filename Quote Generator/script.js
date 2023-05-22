@@ -71,39 +71,38 @@ async function getQuote() {
     const response = await fetch(proxyUrl + apiUrl);
     const data = await response.json();
 
-    // If Author field is blank and replace it with 'Unknown'
-    // if (data.quoteAuthor === "") {
-    //   authorText.textContent = "Unknown";
-    // } else {
-    //   authorText.textContent = data.quoteAuthor;
-    // }
+    // If Author field is blank, add 'Unknown'
+    if (data.quoteAuthor === "") {
+      authorText.innerText = "Unknown";
+    } else {
+      authorText.innerText = data.quoteAuthor;
+    }
+
     // Reduce font size for long quotes
-    // if (quote.text.length > 120) {
-    //   quoteText.classList.add("long-quote");
-    // } else {
-    //   quoteText.classList.remove("long-quote");
-    // }
-    // quoteText.textContent = data.quoteText;
-    // Stop Loader , Show the Quote
-    // complete();
+    if (data.quoteText.length > 120) {
+      quoteText.classList.add("long-quote");
+    } else {
+      quoteText.classList.remove("long-quote");
+    }
+    quoteText.innerText = data.quoteText;
   } catch (error) {
     // Catch Error Here
     getQuote();
-    console.log("Whoops, no quote", error);
+    // console.log("Whoops, no quote", error);
   }
 }
 
 // Tweet Quote
-// function tweetQuote() {
-//   const quote = quoteText.innerText;
-//   const author = authorText.innerText;
-//   const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
-//   window.open(twitterUrl, "_blank");
-// }
+function tweetQuote() {
+  const quote = quoteText.innerText;
+  const author = authorText.innerText;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+  window.open(twitterUrl, "_blank");
+}
 
 // Event Listeners
 newQuoteBtn.addEventListener("click", getQuote);
-// twitterBtn.addEventListener("click", tweetQuote);
+twitterBtn.addEventListener("click", tweetQuote);
 
 // On Load
 getQuote();
