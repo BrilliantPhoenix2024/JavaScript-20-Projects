@@ -45,16 +45,32 @@ function newQuote() {
 }
 
 // Get Quotes From API
+// async function getQuote() {
+//   loading();
+//   const apiUrl = "https://type.fit/api/quotes";
+//   try {
+//     const response = await fetch(apiUrl);
+//     apiQuotes = await response.json();
+//     newQuote();
+
+//     // Stop Loader , Show the Quote
+//     // complete();
+//   } catch (error) {
+//     // Catch Error Here
+// getQuote();
+//     // console.log('Whoops, no quote', error)
+//   }
+// }
+
+// Get Quotes From API
 async function getQuote() {
-  loading();
-  // const proxyUrl = "https://cors-anywhere.herokuapp.com";
-  // const apiUrl =
-  //   "https://api.forismatic.com/api/1.0/?method=getquote&lang=en&format=json";
-  const apiUrl = "https://type.fit/api/quotes";
+  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+  const apiUrl =
+    "https://api.forismatic.com/api/1.0/?method=getquote&lang=en&format=json";
   try {
-    const response = await fetch(apiUrl);
-    apiQuotes = await response.json();
-    newQuote();
+    const response = await fetch(proxyUrl + apiUrl);
+    const data = await response.json();
+
     // If Author field is blank and replace it with 'Unknown'
     // if (data.quoteAuthor === "") {
     //   authorText.textContent = "Unknown";
@@ -72,7 +88,8 @@ async function getQuote() {
     // complete();
   } catch (error) {
     // Catch Error Here
-    // getQuote();
+    getQuote();
+    console.log("Whoops, no quote", error);
   }
 }
 
