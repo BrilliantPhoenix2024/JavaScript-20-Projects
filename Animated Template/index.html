@@ -16,6 +16,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
     />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <!-- Tailwind Library -->
     <link
       rel="stylesheet"
@@ -63,7 +65,7 @@
               <i
                 class="lg:text-gray-300 text-gray-500 fab fa-facebook text-lg leading-lg"
               ></i>
-              <span class="lg:hidden inline-block ml-2">Share</span>
+              <span class="lg:hidden inline-block ml-2"></span>
             </a>
           </li>
           <!-- Social Media Button -->
@@ -76,7 +78,7 @@
               <i
                 class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg"
               ></i>
-              <span class="lg:hidden inline-block ml-2">Tweet</span>
+              <span class="lg:hidden inline-block ml-2"></span>
             </a>
           </li>
           <!-- Social Media Button -->
@@ -89,7 +91,7 @@
               <i
                 class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg"
               ></i>
-              <span class="lg:hidden inline-block ml-2">Star</span>
+              <span class="lg:hidden inline-block ml-2"></span>
             </a>
           </li>
         </ul>
@@ -254,10 +256,8 @@
                 repellat obcaecati tenetur officia distinctio! A voluptates
                 numquam, neque libero molestiae natus facere temporibus!
               </p>
-              <a
-                href="https://www.creative-tim.com/framework/tailwind-starter-kit"
-                class="font-bold text-gray-800 mt-8"
-                >Check Tailwind Starter Kit!
+              <a href="#" class="font-bold text-gray-800 mt-8"
+                >Check and Start!
               </a>
             </div>
 
@@ -329,7 +329,11 @@
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
               <!-- Image -->
-              <img alt="..." class="max-w-full rounded-lg shadow-lg" src="./img/wooden-bench.webp" />
+              <img
+                alt="..."
+                class="max-w-full rounded-lg shadow-lg"
+                src="./img/wooden-bench.webp"
+              />
             </div>
             <!-- Text Box Container-->
             <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -915,6 +919,11 @@
     </footer>
     <!-- End of Footer Section -->
   </body>
+  <!-- AOS.js -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <!-- Navigation Script -->
   <script>
     function toggleNavbar(collapseID) {
