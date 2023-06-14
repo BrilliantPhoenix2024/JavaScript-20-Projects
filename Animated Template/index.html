@@ -23,6 +23,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
     />
+    <!-- AOS.js -->
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="./script.js"></script>
+    <!-- Navigation Script -->
+    <script defer src="./navbar.js"></script>
   </head>
   <body class="text-gray-800 antialiased">
     <!-- Navigation -->
@@ -975,21 +980,4 @@
     </footer>
     <!-- End of Footer Section -->
   </body>
-  <!-- AOS.js -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      delay: 200,
-      duration: 1500,
-      once: false,
-      mirror: false,
-    });
-  </script>
-  <!-- Navigation Script -->
-  <script>
-    function toggleNavbar(collapseID) {
-      document.getElementById(collapseID).classList.toggle("hidden");
-      document.getElementById(collapseID).classList.toggle("block");
-    }
-  </script>
 </html>
