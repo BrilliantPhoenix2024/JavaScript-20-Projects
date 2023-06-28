@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa&family=Kaushan+Script&family=Nunito&display=swap");
+
 html {
   box-sizing: border-box;
 }
@@ -8,6 +10,7 @@ body {
   overflow-y: hidden;
   display: flex;
   align-items: center;
+  font-family: Nunito, sans-serif;
 }
 
 /* Video Background */
@@ -46,6 +49,7 @@ video {
   z-index: 2;
   display: flex;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .input-container {
@@ -78,6 +82,7 @@ input {
   border-radius: 20px;
   background: #fff;
   outline: none;
+  font-family: Nunito, sans-serif;
 }
 
 /* Button */
@@ -92,6 +97,10 @@ button {
   color: white;
   cursor: pointer;
   outline: none;
+}
+
+button:hover {
+  filter: brightness(110%);
 }
 
 /* Countdown */
@@ -132,6 +141,8 @@ li span {
   }
 
   .container {
+    min-width: unset;
+    width: 95vw;
     min-height: 245px;
     padding: 20px;
     margin: 10px;
