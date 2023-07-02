@@ -88,7 +88,7 @@ a:active {
 }
 
 /* Modal */
-.madal-container {
+.modal-container {
   background: rgba(0, 0, 0, 0.6);
   display: none;
   position: fixed;
