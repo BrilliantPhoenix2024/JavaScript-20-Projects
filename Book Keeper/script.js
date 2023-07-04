@@ -6,7 +6,7 @@ const websiteNameEl = document.getElementById("website-name");
 const websiteUrlEl = document.getElementById("website-url");
 const bookmarksContainer = document.getElementById("bookmarks-container");
 
-let bookmarks = [];
+let bookmarks = {};
 
 // Show Modal, Focus on Input
 function showModal() {
@@ -14,14 +14,14 @@ function showModal() {
   websiteNameEl.focus();
 }
 
-// Modal Event Listener
+// Modal Event Listeners
 modalShow.addEventListener("click", showModal);
-modalClose.addEventListener("click", () => {
-  modal.classList.remove("show-modal");
-});
-window.addEventListener("click", (e) => {
-  e.target === modal ? modal.classList.remove("show-modal") : false;
-});
+modalClose.addEventListener("click", () =>
+  modal.classList.remove("show-modal")
+);
+window.addEventListener("click", (e) =>
+  e.target === modal ? modal.classList.remove("show-modal") : false
+);
 
 // Validate Form
 function validate(nameValue, urlValue) {
@@ -40,13 +40,14 @@ function validate(nameValue, urlValue) {
   return true;
 }
 
-// Build Bookmarks DOM
+// Build Bookmarks
 function buildBookmarks() {
   // Remove all bookmark elements
   bookmarksContainer.textContent = "";
   // Build items
-  bookmarks.forEach((bookmark) => {
-    const { name, url } = bookmark;
+  Object.keys(bookmarks).forEach((id) => {
+    const { name, url } = bookmarks[id];
+
     // Item
     const item = document.createElement("div");
     item.classList.add("item");
@@ -54,7 +55,7 @@ function buildBookmarks() {
     const closeIcon = document.createElement("i");
     closeIcon.classList.add("fas", "fa-times");
     closeIcon.setAttribute("title", "Delete Bookmark");
-    closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`);
+    closeIcon.setAttribute("onclick", `deleteBookmark('${id}')`);
     // Favicon / Link Container
     const linkInfo = document.createElement("div");
     linkInfo.classList.add("name");
@@ -62,7 +63,7 @@ function buildBookmarks() {
     const favicon = document.createElement("img");
     favicon.setAttribute(
       "src",
-      `https://www.google.com/s2/favicons?domain=jacinto.design=${url}`
+      `https://s2.googleusercontent.com/s2/favicons?domain=${url}`
     );
     favicon.setAttribute("alt", "Favicon");
     // Link
@@ -77,37 +78,35 @@ function buildBookmarks() {
   });
 }
 
-// Fetch Bookmarks
+// Fetch bookmarks
 function fetchBookmarks() {
   // Get bookmarks from localStorage if available
   if (localStorage.getItem("bookmarks")) {
     bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   } else {
-    // Create bookmarks array in localStorage
-    bookmarks = [
-      {
-        name: "Atefeh Mohammadi",
-        url: "https://google.com",
-      },
-    ];
+    // Create bookmarks object in localStorage
+    const id = `http://jacinto.design`;
+    bookmarks[id] = {
+      name: "Jacinto Design",
+      url: "http://jacinto.design",
+    };
+
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }
   buildBookmarks();
 }
 
 // Delete Bookmark
-function deleteBookmark(url) {
-  bookmarks.forEach((bookmark, index) => {
-    if (bookmark.url === url) {
-      bookmarks.splice(index, 1);
-    }
-  });
-  // Update bookmarks array in loclaStorage, re-populate DOM
+function deleteBookmark(id) {
+  // Loop through the bookmarks array
+  if (bookmarks[id]) {
+    delete bookmarks[id];
+  }
+  // Update bookmarks array in localStorage, re-populate DOM
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   fetchBookmarks();
 }
 
-// Handle Data from Form
 function storeBookmark(e) {
   e.preventDefault();
   const nameValue = websiteNameEl.value;
@@ -115,14 +114,17 @@ function storeBookmark(e) {
   if (!urlValue.includes("http://", "https://")) {
     urlValue = `https://${urlValue}`;
   }
+  // Validate
   if (!validate(nameValue, urlValue)) {
     return false;
   }
+  // Set bookmark object, add to array
   const bookmark = {
     name: nameValue,
     url: urlValue,
   };
-  bookmarks.push(bookmark);
+  bookmarks[urlValue] = bookmark;
+  // Set bookmarks in localStorage, fetch, reset input fields
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   fetchBookmarks();
   bookmarkForm.reset();
