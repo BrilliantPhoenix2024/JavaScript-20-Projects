@@ -35,7 +35,8 @@ body {
 
 video {
   border-radius: 5px;
-
+  width: 100%;
+  height: auto;
 }
 
 /* Containers */
@@ -60,10 +61,7 @@ video {
   z-index: 5;
   display: flex;
   justify-content: space-between;
-
 }
-
-
 
 .control-group {
   width: 100%;
@@ -83,17 +81,13 @@ video {
 
 /* Progress Bar */
 .progress-range {
-
   margin: auto;
   border-radius: 10px;
   position: absolute;
   left: 15px;
   top: 15px;
   cursor: pointer;
-
 }
-
-
 
 .progress-bar {
   background: var(--primary-color);
@@ -166,10 +160,7 @@ video {
   margin-right: 15px;
 }
 
-
-
 select {
-
   color: var(--font-color);
   border: none;
   font-size: 18px;
@@ -177,8 +168,6 @@ select {
   top: -2.5px;
   border-radius: 5px;
 }
-
-
 
 select > option {
   background: rgba(0, 0, 0, 0.9);
@@ -207,7 +196,10 @@ select > option {
 
 /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {
-
+  .player {
+    min-width: 0;
+    max-width: 95vw;
+  }
 
   .fas {
     font-size: 20px;
