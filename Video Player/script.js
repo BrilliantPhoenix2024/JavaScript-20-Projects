@@ -53,6 +53,28 @@ function setProgress(e) {
 }
 
 // Volume Controls --------------------------- //
+// volume Bar
+function changeValume(e) {
+  let volume = e.offsetX / volumeRange.offsetWidht;
+  // Rounding volume up or down
+  if (volume < 0) {
+    volume = 0;
+  }
+  if (volume > 0.9) {
+    volume = 1;
+  }
+  volumeBar.style.width = `${volume * 100}%`;
+  video.volume = volume;
+  // Change icon depending on volume
+  volumeIcon.className = "";
+  if (volume > 0.7) {
+    volumeIcon.classList.add("fas", "fa-volume-up");
+  } else if (volume < 0.7 && volume > 0) {
+    volumeIcon.classList.add("fas", "fa-volume-down");
+  } else if (volume === 0) {
+    volumeIcon.classList.add("fas", "fa-volume-off");
+  }
+}
 
 // Change Playback Speed -------------------- //
 
@@ -64,3 +86,4 @@ video.addEventListener("click", togglePlay);
 video.addEventListener("timeupdate", updateProgress);
 video.addEventListener("canplay", updateProgress);
 progressRange.addEventListener("click", setProgress);
+volumeRange.addEventListener("click", changeValume);
