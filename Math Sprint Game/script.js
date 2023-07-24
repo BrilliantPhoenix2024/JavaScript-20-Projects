@@ -30,9 +30,48 @@ let equationObject = {};
 const wrongFormat = [];
 
 // Time
+let timer;
+let timeplayed = 0;
+let baseTime = 0;
+let penaltyTime = 0;
+let finalTime = 0;
+let finalTimeDisplay = "0.0s";
 
 // Scroll
 let valueY = 0;
+
+// Stop Timer, Process Results, go to Score Page
+function checkTime() {
+  if (playerGuessArray.length == questionAmount) {
+    clearInterval(timer);
+    // Check for wrong guesses, add penalty time
+    equationsArray.forEach((equation, index) => {
+      if (equation.evaluated === playerGuessArray[index]) {
+        // Correct Guess, No Penalty
+      } else {
+        // Incorrect Guess, Add Penalty
+        penaltyTime += 0.5;
+      }
+    });
+    finalTime = timeplayed + penaltyTime;
+  }
+}
+
+// Add a tenth of a second to timePlayed
+function addTime() {
+  timeplayed += 0.1;
+  checkTime();
+}
+
+// Start timer when game page is clicked
+function startTimer() {
+  // Reset times
+  timeplayed = 0;
+  peneltyTime = 0;
+  finalTime = 0;
+  timer = setInterval(addTime, 1000);
+  gamePage.removeEventListener("click", startTimer);
+}
 
 // Scroll, Store user selection in playerGuessArray
 function select(guessedTrue) {
@@ -181,3 +220,4 @@ startForm.addEventListener("click", () => {
 
 // Event Listeners
 startForm.addEventListener("submit", selectQuestionAmount);
+gamePage.addEventListener("click", startTimer);
