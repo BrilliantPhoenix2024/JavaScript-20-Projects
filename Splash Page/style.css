@@ -20,8 +20,16 @@ body {
 .wrapper {
   position: relative;
   width: 1440px;
-  min-height: 100vh;
+  height: 1379px;
   margin: auto;
+}
+
+.brand-img {
+  position: absolute;
+  width: 193px;
+  height: 47.64px;
+  left: 221px;
+  top: 50.25px;
 }
 
 .title {
@@ -46,4 +54,82 @@ body {
   font-weight: normal;
   font-size: 20px;
   line-height: 32px;
+}
+
+.app-store-btn {
+  position: absolute;
+  width: 138.44px;
+  height: 46.28px;
+  left: 221px;
+  top: 531px;
+}
+
+.app-store-btn img {
+  width: 138.44px;
+  height: 46.28px;
+}
+
+.google-play-btn {
+  position: absolute;
+  width: 158.19px;
+  height: 48.28px;
+  left: 381.81px;
+  top: 531px;
+}
+
+.google-play-btn img {
+  width: 158.19px;
+  height: 48.28px;
+}
+
+.main-image-container {
+  position: absolute;
+  width: 535.72px;
+  height: 309.27px;
+  left: 683.28px;
+  top: 229.73px;
+}
+
+.main-image-container img {
+  height: 411.15px;
+}
+
+.profile-img {
+  position: absolute;
+  height: 444px;
+  left: 737px;
+  right: 479px;
+  top: 686px;
+}
+
+.orders-img {
+  position: absolute;
+  height: 470px; /* Had to change to show full box shadow */
+  left: 479px;
+  right: 737px;
+  top: 913px;
+}
+
+.home-img {
+  position: absolute;
+  height: 470px; /* Had to change to show full box shadow */
+  left: 995px;
+  right: 221px;
+  top: 908px;
+}
+
+.cart-img {
+  position: absolute;
+  height: 222px; /* Had to cut in half */
+  left: 221px;
+  right: 995px;
+  top: 1157px;
+}
+
+.product-img {
+  position: absolute;
+  height: 222px; /* Had to cut in half */
+  left: 737px;
+  right: 479px;
+  top: 1157px;
 }
