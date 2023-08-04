@@ -25,7 +25,7 @@
       <!-- Brush -->
       <div class="brush tool">
         <i class="fas fa-brush" id="brush" title="Brush"></i>
-        <input type="color" />
+        <input class="jscolor" value="a51dab" id="brush-color" />
         <span class="size" id="brush-size" title="Brush Size">10</span>
         <input
           type="range"
@@ -39,7 +39,7 @@
       <!-- Bucket -->
       <div class="bucket tool">
         <i class="fas fa-fill-drip" title="Background Color"></i>
-        <input type="color" />
+        <input class="jscolor" value="ffffff" id="bucket-color" />
       </div>
       <!-- Eraser -->
       <div class="tool">
@@ -81,7 +81,13 @@
       </div>
     </div>
 
+    <!-- Mobile Message -->
+    <div class="mobile-message">
+        <h2>Please use application on larger screen</h2>
+    </div>
+
     <!-- Script -->
+    <script src="./jscolor.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
